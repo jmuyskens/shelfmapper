@@ -40,7 +40,7 @@ def normalize(LCCstring):
   """
   result = ''
 
-  elements = re.findall('([A-Z][0-9]{1,4}|[A-Z]{1,3}|[0-9]{1,4}[.]?[0-9]{0,2}|[0-9]{4})',LCCstring)
+  elements = re.findall('(^[A-Z]{1,3}|[A-Z][0-9]{1,4}|[A-Z]{1,3}|[0-9]{1,4}[.]?[0-9]{0,2}|[0-9]{4})',LCCstring)
   print elements
   # handle the alphabetical prefix
   subclass = elements[0]
@@ -55,5 +55,8 @@ def normalize(LCCstring):
   return result
 
 
-lcclist = ['BR5 .L5 2005','BR15.L15','BR5 .L15','BR15.L5','BR16.Z99']
-sorted(map(normalize, lcclist))
+def sortLCC(lcclist):
+  """sort a list of LCCs"""
+  return sorted(map(normalize, lcclist))
+
+sortLCC(['Q223 .F73 2012','Q324 .L48 2012','QA76.89 .B76 2000','QA7 .W43 2012'])
